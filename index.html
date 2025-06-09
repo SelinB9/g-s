@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <style>
+        body {
+            margin: 16px;
+            text-align: center;
+        }
+
+        .hint {
+            color: gray;
+            /* Gri renk */
+            font-size: 0.8em;
+            /* Küçük puntolu */
+            margin: 0;
+            /* Alt ve üst boşluk sıfır */
+            font-style: italic;
+            /* İsteğe bağlı, italik yapar */
+        }
+
+        .btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            /* Daha büyük iç boşluk */
+            font-size: 20px;
+            /* Daha büyük yazı */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .messages {
+            margin: 15px 0 5px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+    <script defer>
+        const messages = [
+            "Özür dilerim",
+            "Bayramda beni yanında istediğini düşünemediğim için",
+            "Sana değer veriyorum ve seni kırmak istemedim",
+            "Seni daraltıp içinden geldiği gibi davranmana engel olmak istemiyorum",
+            "Umarım bugünleri atlatır,bir şeyleri aşarız",
+            "Seni seviyorum",
+            "mimozun..."
+        ];
+        let i = 0;
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const button = document.querySelector("button");
+
+                button.addEventListener("click", () => {
+                    const prevMessage = document.querySelector(".messages");
+                    const prevHint = document.querySelector(".hint");
+                    if (prevMessage) prevMessage.remove();
+                    if (prevHint) prevHint.remove();
+
+                    if (i < messages.length) {
+                        const html = `<p class="messages">${messages[i]}</p>` +
+                            (i < messages.length - 1 ? `<p class="hint">tekrar tıkla</p>` : '');
+                        button.insertAdjacentHTML("afterend", html);
+                        i++;
+                    }
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <button type="button" class="btn">Click me</button>
+</body>
+
+</html>
